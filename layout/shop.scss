@@ -1,0 +1,158 @@
+@import "./../_variables";
+@import "./../settings";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 1298px;
+  margin: 0 auto;
+  gap: 51px;
+}
+
+.header {
+  @include rectangle(1298px, 80px);
+  @include bottom-line;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+
+  &__title {
+    font-size: 32px;
+  }
+}
+
+.user-block {
+  display: flex;
+  gap: 25px;
+  &__text {
+    font-size: 32px;
+  }
+}
+
+main {
+  display: flex;
+  gap: 20px;
+  padding: 0 24px;
+}
+
+.content-block {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 920px;
+}
+
+.search-block {
+  @include rectangle(920px, 80px);
+  @include bottom-line;
+  display: flex;
+  gap: 26px;
+  flex-direction: column;
+}
+
+.sort-block {
+  padding: 0 7px;
+  display: flex;
+  gap: 35px;
+  font-size: 16px;
+}
+
+.sort-block-by-price {
+  display: flex;
+  align-content: center;
+  &__img {
+    @include img(20px, "./Sort.png");
+  }
+}
+.sort-block-by-category {
+  display: flex;
+  align-content: center;
+  &__img {
+    @include img(22px, "./Caretdown.png");
+  }
+}
+.search-input-block {
+  display: flex;
+  padding: 0 7px;
+  align-items: center;
+  gap: 10px;
+  @include rectangle(920px, 32px);
+  &__img {
+    @include img(17.5px, "./Search.png");
+  }
+}
+
+.shop-items-block {
+  padding: 0 7px;
+  display: grid;
+  gap: 23px;
+  grid-template-columns: 1fr 1fr;
+  @include rectangle(862px, 100%);
+}
+
+.shop-item {
+  @include rectangle(360px, 110px);
+  background-color: black;
+}
+
+.cart-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 12px 0 12px;
+  position: sticky;
+  top: 45px;
+  @include rectangle(309px, 830px);
+
+  &__title-cart {
+    font-size: 32px;
+    display: flex;
+    gap: 15px;
+  }
+  &__img-cart {
+    @include img(32px, "./Icon.png");
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include rectangle(285px, 65px);
+    @include bottom-line;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title-item {
+    font-size: 16px;
+  }
+  &__count-item {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  &__price-item {
+    font-size: 18px;
+  }
+  &__img-item {
+    @include img(9px, "./Union.png");
+  }
+  &__buy-block {
+    @include rectangle(285px, 106px);
+    background-color: aqua;
+  }
+  &__buy-price {
+    font-size: 32px;
+  }
+  &__buy-button {
+    @include rectangle(201px, 42px);
+    background-color: #c4c4c4;
+    border-radius: 8px;
+  }
+  &__items-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
