@@ -1,20 +1,2 @@
-@mixin rectangle($width, $height) {
-  width: $width;
-  height: $height;
-}
-
-@mixin square($size) {
-  width: $size;
-  height: $size;
-}
-
-@mixin bottom-line {
-  box-shadow: 0px 1px 0px rgba(204, 204, 204, 0.25);
-}
-
-@mixin img($size, $url) {
-  @include square($size);
-  background-image: url($url);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+$title-size: 32px;
+$name-size: 16px;
