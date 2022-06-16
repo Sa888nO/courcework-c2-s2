@@ -1,5 +1,5 @@
-@import "./../_variables";
-@import "./../settings";
+@import "./_variables";
+@import "./_settings";
 
 .wrapper {
   display: flex;
@@ -13,12 +13,22 @@
   @include rectangle(1298px, 80px);
   @include bottom-line;
   display: flex;
-  align-items: center;
+  text-align: center;
   justify-content: space-between;
   padding: 0 25px;
+  align-items: center;
+  line-height: 28px;
 
+  &__block {
+    display: flex;
+
+    gap: 12px;
+  }
   &__title {
     font-size: 32px;
+  }
+  &__img {
+    @include img(30px, "./sources/Icon2.png");
   }
 }
 
@@ -62,14 +72,14 @@ main {
   display: flex;
   align-content: center;
   &__img {
-    @include img(20px, "./Sort.png");
+    @include img(20px, "./sources/Sort.png");
   }
 }
 .sort-block-by-category {
   display: flex;
   align-content: center;
   &__img {
-    @include img(22px, "./Caretdown.png");
+    @include img(22px, "./sources/Caretdown.png");
   }
 }
 .search-input-block {
@@ -79,7 +89,7 @@ main {
   gap: 10px;
   @include rectangle(920px, 32px);
   &__img {
-    @include img(17.5px, "./Search.png");
+    @include img(17.5px, "./sources/Search.png");
   }
 }
 
@@ -92,8 +102,41 @@ main {
 }
 
 .shop-item {
+  display: flex;
   @include rectangle(360px, 110px);
-  background-color: black;
+
+  flex-shrink: 0;
+  &__img {
+    @include img(110px, "./sources/Rec.png");
+  }
+  &__info-block {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include rectangle(265px, 110px);
+  }
+  &__title {
+    font-size: 16px;
+  }
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include rectangle(265px, 37px);
+  }
+  &__button {
+    @include rectangle(130px, 37px);
+    background: #c4c4c4;
+    border-radius: 8px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__price {
+    font-size: 24px;
+  }
 }
 
 .cart-block {
@@ -103,15 +146,24 @@ main {
   padding: 12px 12px 0 12px;
   position: sticky;
   top: 45px;
-  @include rectangle(309px, 830px);
+  @include rectangle(309px, 700px);
 
+  &__items {
+    @include rectangle(309px, 600px);
+    overflow: auto;
+    scrollbar-width: none;
+  }
+  .cart-block__items::-webkit-scrollbar {
+    width: 0;
+  }
   &__title-cart {
+    height: 45px;
     font-size: 32px;
     display: flex;
     gap: 15px;
   }
   &__img-cart {
-    @include img(32px, "./Icon.png");
+    @include img(32px, "./sources/Icon.png");
   }
 
   &__item {
@@ -136,11 +188,17 @@ main {
     font-size: 18px;
   }
   &__img-item {
-    @include img(9px, "./Union.png");
+    flex-shrink: 0;
+    @include img(9px, "./sources/Union.png");
   }
   &__buy-block {
-    @include rectangle(285px, 106px);
-    background-color: aqua;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: column;
+    @include rectangle(285px, 150px);
+    box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+    padding: 15px;
   }
   &__buy-price {
     font-size: 32px;
@@ -149,6 +207,11 @@ main {
     @include rectangle(201px, 42px);
     background-color: #c4c4c4;
     border-radius: 8px;
+    flex-shrink: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &__items-block {
     display: flex;

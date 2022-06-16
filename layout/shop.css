@@ -3,6 +3,12 @@
           box-sizing: border-box;
 }
 
+div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 body {
   margin: 0px;
   border: 0px;
@@ -14,6 +20,7 @@ button {
   font: inherit;
   color: inherit;
   background-color: transparent;
+  cursor: pointer;
 }
 
 input[type="text"],
@@ -52,17 +59,34 @@ textarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  text-align: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 28px;
+}
+
+.header__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 12px;
 }
 
 .header__title {
   font-size: 32px;
+}
+
+.header__img {
+  width: 30px;
+  height: 30px;
+  background-image: url("./sources/Icon2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .user-block {
@@ -70,11 +94,6 @@ textarea {
   display: -ms-flexbox;
   display: flex;
   gap: 25px;
-}
-
-.user-block__out-button {
-  font-size: 32px;
-  color: red;
 }
 
 .user-block__text {
@@ -136,7 +155,7 @@ main {
 .sort-block-by-price__img {
   width: 20px;
   height: 20px;
-  background-image: url("./Sort.png");
+  background-image: url("./sources/Sort.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -152,7 +171,7 @@ main {
 .sort-block-by-category__img {
   width: 22px;
   height: 22px;
-  background-image: url("./Caretdown.png");
+  background-image: url("./sources/Caretdown.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -173,7 +192,7 @@ main {
 .search-input-block__img {
   width: 17.5px;
   height: 17.5px;
-  background-image: url("./Search.png");
+  background-image: url("./sources/Search.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -190,9 +209,77 @@ main {
 }
 
 .shop-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 360px;
   height: 110px;
-  background-color: black;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.shop-item__img {
+  width: 110px;
+  height: 110px;
+  background-image: url("./sources/Rec.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.shop-item__info-block {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 265px;
+  height: 110px;
+}
+
+.shop-item__title {
+  font-size: 16px;
+}
+
+.shop-item__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 265px;
+  height: 37px;
+}
+
+.shop-item__button {
+  width: 130px;
+  height: 37px;
+  background: #c4c4c4;
+  border-radius: 8px;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.shop-item__price {
+  font-size: 24px;
 }
 
 .cart-block {
@@ -211,10 +298,22 @@ main {
   position: sticky;
   top: 45px;
   width: 309px;
-  height: 830px;
+  height: 700px;
+}
+
+.cart-block__items {
+  width: 309px;
+  height: 600px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.cart-block .cart-block__items::-webkit-scrollbar {
+  width: 0;
 }
 
 .cart-block__title-cart {
+  height: 45px;
   font-size: 32px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -225,7 +324,7 @@ main {
 .cart-block__img-cart {
   width: 32px;
   height: 32px;
-  background-image: url("./Icon.png");
+  background-image: url("./sources/Icon.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -270,17 +369,32 @@ main {
 }
 
 .cart-block__img-item {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   width: 9px;
   height: 9px;
-  background-image: url("./Union.png");
+  background-image: url("./sources/Union.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .cart-block__buy-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 285px;
-  height: 106px;
-  background-color: aqua;
+  height: 150px;
+  -webkit-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+  padding: 15px;
 }
 
 .cart-block__buy-price {
@@ -292,6 +406,18 @@ main {
   height: 42px;
   background-color: #c4c4c4;
   border-radius: 8px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  font-size: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .cart-block__items-block {
