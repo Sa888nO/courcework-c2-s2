@@ -1,15 +1,20 @@
 @import "./_mixins";
 @import "./_settings";
+@import "./_adaptiv";
+@import "./_variables";
 
 .wrapper {
   @include flex("col", 51px);
-  width: 1275px;
   margin: 0 auto;
+  width: 100%;
+  align-items: center;
+  max-width: 1275px;
+  min-width: 800px;
 }
 
 .header {
   @include flex();
-  @include rectangle(1275px, 80px);
+  @include rectangle(100%, 80px);
   @include bottom-line;
   justify-content: space-between;
   padding: 0 25px;
@@ -20,34 +25,38 @@
     @include flex("", 12px);
   }
   &__shop-img {
-    @include img("./sources/Icon2.png", 30px);
+    @include img("./sources/Book.png", 30px);
   }
   &__text {
-    font-size: 32px;
+    font-size: $title-size;
   }
 }
 
 main {
   @include flex("", 20px);
   padding: 0 24px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .content-block {
   @include flex("col", 30px);
-  width: 920px;
+  width: 50%;
+  min-width: 400px;
 }
 
 .search-block {
   @include flex("col", 26px);
-  @include rectangle(920px, 80px);
+  @include rectangle(50%, 80px);
   @include bottom-line;
+  min-width: 400px;
 }
 
 .sort-block {
   flex-shrink: 0;
   @include flex("", 35px);
   padding: 0 7px;
-  font-size: 16px;
+  font-size: $name-size;
   &__element {
     @include flex();
     align-content: center;
@@ -65,6 +74,7 @@ main {
   @include rectangle(920px, 50px);
   padding: 0 7px;
   align-items: center;
+  width: 100%;
 
   &__img {
     @include img("./sources/Search.png", 20px);
@@ -76,7 +86,7 @@ main {
 }
 
 .shop-items-block {
-  @include rectangle(862px, 100%);
+  @include rectangle(50%, 100%);
   display: grid;
   gap: 23px;
   grid-template-columns: repeat(2, 360px);
@@ -104,7 +114,7 @@ main {
     text-overflow: ellipsis;
     height: 60px;
     white-space: normal;
-    font-size: 16px;
+    font-size: $name-size;
   }
   &__interaction-block {
     @include flex();
@@ -122,24 +132,33 @@ main {
 
 .cart-block {
   @include flex("col", 0);
-  @include rectangle(309px, 730px);
+  @include rectangle(309px, 60vh);
   justify-content: space-between;
   padding: 12px 12px 0 12px;
   position: sticky;
   top: 45px;
-  overflow: hidden;
-
+  max-height: 700px;
+  min-height: 300px;
+  width: 50%;
+  max-width: 309px;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  &__items-block {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
   &__title-cart {
     @include flex("", 15px);
     height: 45px;
-    font-size: 32px;
+    font-size: $title-size;
   }
   &__img-cart {
-    @include img("./sources/Icon.png", 32px);
+    @include img("./sources/Cart.png", 32px);
   }
   &__items {
     @include flex("col", 20px);
-    @include rectangle(309px, 530px);
+    @include rectangle(309px, auto);
     overflow: auto;
     padding-right: 17px;
   }
@@ -151,7 +170,7 @@ main {
     padding: 15px;
   }
   &__buy-price {
-    font-size: 32px;
+    font-size: $title-size;
   }
   &__buy-button {
     @include button(201px, 42px, 24px);
@@ -174,7 +193,7 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 250px;
-    font-size: 16px;
+    font-size: $name-size;
   }
   &__count {
     font-size: 14px;
@@ -188,3 +207,4 @@ main {
     flex-shrink: 0;
   }
 }
+@import "./_adaptiv";
