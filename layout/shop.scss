@@ -133,7 +133,7 @@ main {
 .cart-block {
   @include flex("col", 0);
   @include rectangle(309px, 60vh);
-  justify-content: space-between;
+  justify-content: start;
   padding: 12px 12px 0 12px;
   position: sticky;
   top: 45px;

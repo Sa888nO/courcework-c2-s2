@@ -334,9 +334,9 @@ main {
   gap: 0;
   width: 309px;
   height: 60vh;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   padding: 12px 12px 0 12px;
   position: -webkit-sticky;
   position: sticky;
