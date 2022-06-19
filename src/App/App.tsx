@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
+import Button from "@components/Button";
+import "@styles/style.scss";
 
 function App() {
-  return <div className="App"> test-task</div>;
+  return <Button />;
 }
 
 export default App;
