@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 import Button from "@components/Button";
-import "@styles/style.scss";
+import CartItem from "@components/CartItem";
 import "@styles/_settings.scss";
 
 function App() {
-  return <Button styles={"Button_cross"} />;
+  return <CartItem title={"название товара"} count={5} price={400} />;
 }
 
 export default App;
