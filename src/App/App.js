@@ -1,13 +1,17 @@
-import Input from "@components/Input";
-import ShopItem from "@components/ShopItem";
 import "./App.scss";
+import "@styles/_settings.scss";
+import SorterByCategory from "@components/SorterByCategory";
+import SorterByPrice from "@components/SorterByPrice";
 
 function App() {
   return (
     <div className="wrapper">
       <div className="App">
-        <Input />
-        <ShopItem title={"Name-fef"} price={400} />
+        <div>
+          <SorterByCategory />
+          <div>rfrfrfrferwfer</div>
+        </div>
+        <SorterByPrice />
       </div>
     </div>
   );

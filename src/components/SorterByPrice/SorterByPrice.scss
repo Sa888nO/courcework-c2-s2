@@ -6,6 +6,7 @@
   &__element {
     @include flex();
     align-content: center;
+    background-color: aqua;
   }
   &__img-price {
     @include img("./Sort.png", 20px);

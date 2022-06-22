@@ -1,0 +1,49 @@
+@import "/src/styles/mixins";
+@import "/src/styles/variables";
+
+.sort-block {
+  color: black;
+  font-size: $name-size;
+  &__element {
+    @include flex();
+    justify-content: space-between;
+    align-content: center;
+  }
+  &__img-category {
+    @include img("./CaretDown.png", 20px);
+  }
+
+  nav ul ul li {
+    width: 100%;
+  }
+  nav {
+    background-color: white;
+  }
+  nav ul ul {
+    display: none;
+    position: absolute;
+  }
+  nav ul {
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+
+  nav ul li:hover > ul {
+    display: inherit;
+  }
+
+  nav ul li {
+    display: inline-block;
+  }
+
+  nav button {
+    width: 120px;
+    display: flex;
+    text-decoration: none;
+    background-color: white;
+  }
+  nav button:hover {
+    color: blue;
+  }
+}
