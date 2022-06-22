@@ -1,16 +1,12 @@
 {
-  "name": "test-task-for-spherum",
+  "name": "courcework-c2-s2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cra-template-typescript": "^1.2.0",
     "node-sass": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.2",
-    "react-scripts": "^5.0.1",
-    "redux": "^4.2.0",
-    "typescript": "^4.7.4"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -36,8 +32,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
     "react-app-rewire-alias": "^1.1.7",
     "react-app-rewired": "^2.2.1"
   }

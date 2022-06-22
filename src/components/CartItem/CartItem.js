@@ -2,13 +2,7 @@ import React from "react";
 import "./CartItem.scss";
 import Button from "@components/Button";
 
-export type CartItemProps = {
-  title: string;
-  count: number;
-  price: number;
-};
-
-const CartItem: React.FC<CartItemProps> = ({ title, count, price }) => {
+const CartItem = ({ title, count, price }) => {
   return (
     <div className="cart-item">
       <div className="cart-item__info">

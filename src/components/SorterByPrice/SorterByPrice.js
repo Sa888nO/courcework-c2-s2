@@ -1,11 +1,7 @@
 import React from "react";
 import "./SorterByPrice.scss";
 
-export type SorterByPriceProps = {
-  onClick?: (e: React.MouseEvent) => void;
-};
-
-const SorterByPrice: React.FC<SorterByPriceProps> = ({ onClick }) => {
+const SorterByPrice = ({ onClick }) => {
   return (
     <button className="sort-block__element" onClick={onClick}>
       Сортировать по цене

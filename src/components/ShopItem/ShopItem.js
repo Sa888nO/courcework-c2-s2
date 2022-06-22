@@ -2,13 +2,7 @@ import React from "react";
 import "./ShopItem.scss";
 import Button from "@components/Button";
 
-export type ShopItemProps = {
-  title: string;
-  price: number;
-  photo: string;
-};
-
-const ShopItem: React.FC<ShopItemProps> = ({ title, price, photo }) => {
+const ShopItem = ({ title, price, photo }) => {
   return (
     <div className="shop-item">
       <img className="shop-item__img" src={photo} alt="not finded"></img>
