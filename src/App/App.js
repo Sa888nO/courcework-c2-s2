@@ -1,17 +1,17 @@
 import "./App.scss";
 import "@styles/_settings.scss";
-import SorterByCategory from "@components/SorterByCategory";
-import SorterByPrice from "@components/SorterByPrice";
+import { useSelector } from "react-redux";
+
+import ShopItem from "@components/ShopItem";
 
 function App() {
+  const items = useSelector((state) => state.items.items);
   return (
     <div className="wrapper">
       <div className="App">
-        <div>
-          <SorterByCategory />
-          <div>rfrfrfrferwfer</div>
-        </div>
-        <SorterByPrice />
+        {items.map((item) => (
+          <ShopItem title={item.name} price={item.price} />
+        ))}
       </div>
     </div>
   );
