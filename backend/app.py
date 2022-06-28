@@ -1,6 +1,25 @@
+import imp
 from flask import Flask, jsonify, request
+import sqlalchemy as db
+from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
+
+engine = create_engine('sqlite:///db.sqlite')
+
+session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
+
+Base = declarative_base()
+Base.query = session.query_property()
+
+from models import * 
+
+Base.metadata.create_all(bind=engine)
+
+
+
 
 users = [
     {
@@ -79,6 +98,11 @@ def delete_post(post_id):
     idx, _ = next((x for x in enumerate(posts) if x[1]['id'] == post_id), (None, None))
     posts.pop(idx)
     return '', 204
+
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    session.remove()
 
 
 if __name__ == '__main__':
