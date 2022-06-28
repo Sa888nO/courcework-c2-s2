@@ -9,6 +9,6 @@ class User(Base):
 class Post(Base):
     __tablename__ = "posts"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(User.id), primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
     title = db.Column(db.String(50), nullable=False)
     text = db.Column(db.String(500), nullable=False)

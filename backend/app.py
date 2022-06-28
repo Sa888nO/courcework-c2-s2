@@ -65,7 +65,15 @@ posts = [
 # users api
 @app.route('/users', methods=['GET'])
 def get_users_list():
-    return jsonify(users)
+    users = User.query.all()
+    serialised = []
+    for user in users: 
+        serialised.append({
+            'id': user.id,
+            'name': user.name,
+            'password': user.password
+        })
+    return jsonify(serialised)
 
 @app.route('/users', methods=['POST'])
 def update_users_list():
