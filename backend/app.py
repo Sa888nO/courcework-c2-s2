@@ -36,7 +36,10 @@ def add_new_user():
 @app.route('/api/authorization', methods=['POST'])
 def authorization():
     user = User(**request.json)
-    item = User.query.filter(User.surname == user.surname and User.password == user.password).first()
+    item = User.query.filter(
+        User.surname.like(user.surname),
+        User.password.like(user.password),
+        ).first()
     if not item:
         return {'massage': 'Неверный логин или пароль'}, 400
     serialized = {
@@ -50,13 +53,14 @@ def authorization():
 # api /api/lessons
 @app.route('/api/lessons', methods=['GET'])
 def get_lessons_list():
-    users = User.query.all()
+    lessons = Lesson.query.all()
     serialized = []
-    for user in users: 
+    for lesson in lessons: 
         serialized.append({
-            'id': user.id,
-            'name': user.name,
-            'password': user.password
+            'id': lesson.id,
+            'title': lesson.title,
+            'date': lesson.date,
+            'coach': lesson.coach
         })
     return jsonify(serialized)
 

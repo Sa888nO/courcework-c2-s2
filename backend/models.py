@@ -11,8 +11,8 @@ class Lesson(Base):
     __tablename__ = "lessons"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
-    date = db.Column(db.DateTime, nullable=False)
-    couch = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.DateTime(timezone=True), nullable=False)
+    coach = db.Column(db.String(500), nullable=False)
 
 class Subscribe(Base):
     __tablename__ = "subscribes"
