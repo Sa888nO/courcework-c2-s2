@@ -1,5 +1,4 @@
 from email import message
-import imp
 from flask import Flask, jsonify, request
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker, scoped_session

@@ -1,19 +1,19 @@
-import "./App.scss";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import "@styles/_settings.scss";
-import { useSelector } from "react-redux";
 
-import ShopItem from "@components/ShopItem";
+import Authorization from "@pages/Authorization";
+import Registration from "@pages/Registration";
+import MainPage from "@pages/MainPage";
 
 function App() {
-  const items = useSelector((state) => state.items.items);
   return (
-    <div className="wrapper">
-      <div className="App">
-        {items.map((item) => (
-          <ShopItem title={item.name} price={item.price} />
-        ))}
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/authorization" element={<Authorization />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/mainpage" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
