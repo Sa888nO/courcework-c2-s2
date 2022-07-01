@@ -22,6 +22,9 @@ Base.metadata.create_all(bind=engine)
 @app.route('/api/registration', methods=['POST'])
 def add_new_user():
     new_user = User(**request.json)
+    if(new_user.name == "" or new_user.surname == "" or new_user.password == ""):
+        return {'massage': 'Данные пришли неверно'}, 400
+    # проверку лучше сделать в дальнейшем на фронте
     session.add(new_user)
     session.commit()
     serialized = {
@@ -40,8 +43,9 @@ def authorization():
         User.surname.like(user.surname),
         User.password.like(user.password),
         ).first()
-    if not item:
+    if (not item or user.surname == "" or user.password == ""):
         return {'massage': 'Неверный логин или пароль'}, 400
+    # проверку лучше сделать в дальнейшем на фронте
     serialized = {
         'id': item.id,
         'name': item.name,
@@ -64,8 +68,21 @@ def get_lessons_list():
         })
     return jsonify(serialized)
 
-# api /subscribes
+# api /api/subscribesById
+@app.route('/api/subscribesById/<int:user_id>', methods=['POST'])
+def get_subs_by_user_id(user_id):
+    subs = Subscribe.query.filter(Subscribe.user_id.like(user_id))
 
+    # проверку
+    serialized = []
+    for sub in subs: 
+        serialized.append({
+            'user_id': sub.user_id,
+            'lesson_id': sub.lesson_id,
+        })
+    if serialized == []:
+        return {'massage': 'записей нет'}, 400
+    return jsonify(serialized)
 # @app.route()
 
 # # api /users
