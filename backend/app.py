@@ -71,8 +71,7 @@ def get_lessons_list():
 # api /api/subscribesById
 @app.route('/api/subscribesById/<int:user_id>', methods=['POST'])
 def get_subs_by_user_id(user_id):
-    subs = Subscribe.query.filter(Subscribe.user_id.like(user_id))
-
+    subs = Subscribe.query.filter(Subscribe.user_id.like(user_id)) 
     # проверку
     serialized = []
     for sub in subs: 
@@ -83,7 +82,20 @@ def get_subs_by_user_id(user_id):
     if serialized == []:
         return {'massage': 'записей нет'}, 400
     return jsonify(serialized)
-# @app.route()
+
+# api /api/subscribe
+@app.route('/api/subscribe', methods=['POST'])
+def add_new_subscribe():
+    new_subscribe = Subscribe(**request.json)
+    session.add(new_subscribe)
+    session.commit()
+    serialized = {
+        'user_id': new_subscribe.user_id,
+        'lesson_id': new_subscribe.lesson_id
+    }
+    return jsonify(serialized)
+
+
 
 # # api /users
 # @app.route('/users', methods=['GET'])
