@@ -1,3 +1,4 @@
+from email import message
 import imp
 from flask import Flask, jsonify, request
 import sqlalchemy as db
@@ -72,7 +73,6 @@ def get_lessons_list():
 @app.route('/api/subscribesById/<int:user_id>', methods=['POST'])
 def get_subs_by_user_id(user_id):
     subs = Subscribe.query.filter(Subscribe.user_id.like(user_id)) 
-    # проверку
     serialized = []
     for sub in subs: 
         serialized.append({
@@ -84,6 +84,7 @@ def get_subs_by_user_id(user_id):
     return jsonify(serialized)
 
 # api /api/subscribe
+#дает создавать фейк сс, но можно пофиксить ограничением на кнопке
 @app.route('/api/subscribe', methods=['POST'])
 def add_new_subscribe():
     new_subscribe = Subscribe(**request.json)
@@ -95,74 +96,31 @@ def add_new_subscribe():
     }
     return jsonify(serialized)
 
+# api /api/DeleteSubscribe
+@app.route('/api/DeleteSubscribe', methods=['DELETE'])
+def delete_subscribe():
+    delete_subscribe = Subscribe(**request.json)
+    subscribe = Subscribe.query.filter(
+    Subscribe.user_id.like(delete_subscribe.user_id),
+    Subscribe.lesson_id.like(delete_subscribe.lesson_id),
+    ).first()
+    if not subscribe:
+        return {'message': "такой записи нет"}, 400
+    session.delete(subscribe)
+    session.commit()
+    return "", 204
 
-
-# # api /users
-# @app.route('/users', methods=['GET'])
-# def get_users_list():
-#     users = User.query.all()
-#     serialized = []
-#     for user in users: 
-#         serialized.append({
-#             'id': user.id,
-#             'name': user.name,
-#             'password': user.password
-#         })
-#     return jsonify(serialized)
-
-
-# # api /posts
-# @app.route('/posts', methods=['GET'])
-# def get_posts_list():
-#     posts = Post.query.all()
-#     serialized = []
-#     for post in posts: 
-#         serialized.append({
-#             'id': post.id,
-#             'user_id': post.user_id,
-#             'title': post.title,
-#             'text': post.text
-#         })
-#     return jsonify(serialized)
-
-# @app.route('/posts', methods=['POST'])
-# def update_postrs_list():
-#     new_one = Post(**request.json)
-#     session.add(new_one)
-#     session.commit()
-#     serialized = {
-#         'id': new_one.id,
-#         'user_id': new_one.user_id,
-#         'title': new_one.title,
-#         'text': new_one.text
-#     }
-#     return jsonify(serialized)
-
-# @app.route('/posts/<int:post_id>', methods=['PUT'])
-# def update_post(post_id):
-#     item = Post.query.filter(Post.id == post_id).first()
-#     params = request.json
-#     if not item:
-#         return {'massage': 'No posts with this id'}, 400
-#     for key, value in params.items():
-#         setattr(item, key, value)
-#     session.commit()
-#     serialized = {
-#     'id': item.id,
-#     'user_id': item.user_id,
-#     'title': item.title,
-#     'text': item.text
-#     }
-#     return jsonify(serialized)
-
-# @app.route('/posts/<int:post_id>', methods=['DELETE'])
-# def delete_post(post_id):
-#     item = Post.query.filter(Post.id == post_id).first()
-#     if not item:
-#         return {'massage': 'No posts with this id'}, 400
-#     session.delete(item)
-#     session.commit()
-#     return '', 204
+# api /api/AllSubscribes
+@app.route('/api/AllSubscribes', methods=['GET'])
+def get_subscribes_list():
+    subscribes = Subscribe.query.all()
+    serialized = []
+    for subscribe in subscribes: 
+        serialized.append({
+            'user_id': subscribe.user_id,
+            'lesson_id': subscribe.lesson_id
+        })
+    return jsonify(serialized)
 
 # session close
 @app.teardown_appcontext
