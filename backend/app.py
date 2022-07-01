@@ -18,8 +18,48 @@ from models import *
 
 Base.metadata.create_all(bind=engine)
 
-# api /user 
-# api /lessons
+# api /api/registration
+@app.route('/api/registration', methods=['POST'])
+def add_new_user():
+    new_user = User(**request.json)
+    session.add(new_user)
+    session.commit()
+    serialized = {
+        'id': new_user.id,
+        'name': new_user.name,
+        'surname': new_user.surname,
+        'password': new_user.password  
+    }
+    return jsonify(serialized)
+
+# api /api/authorization
+@app.route('/api/authorization', methods=['POST'])
+def authorization():
+    user = User(**request.json)
+    item = User.query.filter(User.surname == user.surname and User.password == user.password).first()
+    if not item:
+        return {'massage': 'Неверный логин или пароль'}, 400
+    serialized = {
+        'id': item.id,
+        'name': item.name,
+        'surname': item.surname,
+        'password': item.password  
+    }
+    return jsonify(serialized)
+
+# api /api/lessons
+@app.route('/api/lessons', methods=['GET'])
+def get_lessons_list():
+    users = User.query.all()
+    serialized = []
+    for user in users: 
+        serialized.append({
+            'id': user.id,
+            'name': user.name,
+            'password': user.password
+        })
+    return jsonify(serialized)
+
 # api /subscribes
 
 # @app.route()
@@ -37,17 +77,6 @@ Base.metadata.create_all(bind=engine)
 #         })
 #     return jsonify(serialized)
 
-# @app.route('/users', methods=['POST'])
-# def update_users_list():
-#     new_one = User(**request.json)
-#     session.add(new_one)
-#     session.commit()
-#     serialized = {
-#         'id': new_one.id,
-#         'name': new_one.name,
-#         'password': new_one.password  
-#     }
-#     return jsonify(serialized)
 
 # # api /posts
 # @app.route('/posts', methods=['GET'])
