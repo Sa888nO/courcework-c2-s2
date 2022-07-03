@@ -54,6 +54,20 @@ def authorization():
     }
     return jsonify(serialized)
 
+# api api/users
+@app.route('/api/users', methods=['GET'])
+def get_users_list():
+    users = User.query.all()
+    serialized = []
+    for user in users: 
+        serialized.append({
+            'id': user.id,
+            'name': user.name,
+            'surname': user.surname,
+            'password': user.password
+        })
+    return jsonify(serialized)
+
 # api /api/lessons
 @app.route('/api/lessons', methods=['GET'])
 def get_lessons_list():
@@ -128,4 +142,4 @@ def shutdown_session(exception=None):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
