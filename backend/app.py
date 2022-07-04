@@ -18,6 +18,20 @@ from models import *
 
 Base.metadata.create_all(bind=engine)
 
+# [GET]
+# api /api/AllSubscribes
+# api api/users
+# api /api/lessons
+
+# api /api/registration
+# api /api/authorization
+# api /api/subscribesById
+# api /api/subscribe
+
+# api /api/DeleteSubscribe
+
+
+
 # api /api/registration
 @app.route('/api/registration', methods=['POST'])
 def add_new_user():
