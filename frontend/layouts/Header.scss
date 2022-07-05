@@ -1,2 +1,42 @@
 @import "./mixins";
 @import "./settings";
+
+.test {
+  height: 2000px;
+}
+
+.header {
+  @include flex();
+  @include rectangle(100%, 80px);
+  @include bottom-line;
+  min-width: 1000px;
+  position: sticky;
+  top: 0px;
+  justify-content: space-between;
+  padding: 0 25px;
+  align-items: center;
+  line-height: 28px;
+
+  &__title {
+    font-weight: bold;
+    @include flex("", 12px);
+  }
+
+  &__text {
+    font-size: 32px;
+  }
+  .user-block {
+    @include flex("", 20px);
+    &__user {
+      font-size: 20px;
+    }
+    &__button-out {
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      border: 1px solid rgb(151, 0, 0);
+      background-color: rgb(151, 0, 0);
+      font-size: 20px;
+    }
+  }
+}
