@@ -1,11 +1,14 @@
 from email import message
 from flask import Flask, jsonify, request
 import sqlalchemy as db
+from flask_cors import CORS
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
+
 app = Flask(__name__)
+CORS(app)
 
 engine = create_engine('sqlite:///db.sqlite')
 

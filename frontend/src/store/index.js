@@ -1,10 +1,14 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
-import { itemsReducer } from "./items/itemsReducer";
+import { userReducer } from "./userReducer";
+import { lessonReducer } from "./lessonReducer";
+import { subscribeReducer } from "./subscribeReduces";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
-  items: itemsReducer,
+  user: userReducer,
+  lessons: lessonReducer,
+  subscribes: subscribeReducer,
 });
 
 export const store = createStore(

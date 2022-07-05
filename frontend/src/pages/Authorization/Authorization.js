@@ -1,5 +1,5 @@
 import "./Authorization.scss";
-import Login from "../../components/Login";
+import Login from "@components/Login";
 import Header from "@components/Header";
 import { Link } from "react-router-dom";
 const Authorization = () => {
