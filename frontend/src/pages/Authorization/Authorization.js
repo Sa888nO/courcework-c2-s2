@@ -1,13 +1,16 @@
 import "./Authorization.scss";
-import LessonCard from "@components/LessonCard";
+import Login from "../../components/Login";
+import Header from "@components/Header";
+import { Link } from "react-router-dom";
 const Authorization = () => {
   return (
-    <LessonCard
-      title={"Качалка"}
-      coach={"Павел"}
-      date={"06-07-2022 12:00:00"}
-      subscribe={true}
-    />
+    <div className="wrapper">
+      <Header title={"Авторизация"} />
+      <Login />
+      <Link to={"/registration"} className="link-to-create-new-user">
+        Зарегестрироваться
+      </Link>
+    </div>
   );
 };
 

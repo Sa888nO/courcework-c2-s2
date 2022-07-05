@@ -1,0 +1,41 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 350px;
+  height: 350px;
+  background-color: rgb(255, 162, 47);
+  border-radius: 20%;
+  padding: 15px;
+
+  &__button {
+    font-weight: bold;
+    font-size: 30px;
+    height: 50px;
+    width: 60%;
+    border-radius: 150px;
+    background-color: rgb(43, 253, 24);
+    &:hover {
+      background-color: rgb(222, 243, 34);
+    }
+  }
+}
+
+.input-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 30px;
+
+  &__info {
+    font-weight: bold;
+    text-align: center;
+  }
+  &__input {
+    padding: 0 10px;
+    font-size: 30px;
+    width: 100%;
+  }
+}

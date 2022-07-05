@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+.link-to-create-new-user {
+  text-decoration: none;
+  width: 200px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 150px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: aqua;
+}

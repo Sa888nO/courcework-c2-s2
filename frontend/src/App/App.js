@@ -9,10 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Authorization />}>
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/mainpage" element={<MainPage />} />
-        </Route>
+        <Route exact path="/" element={<Authorization />}></Route>
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/mainpage" element={<MainPage />} />
       </Routes>
     </BrowserRouter>
   );
