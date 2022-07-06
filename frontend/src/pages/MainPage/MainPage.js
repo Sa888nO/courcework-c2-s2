@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLessonsAction } from "./../../store/lessonReducer";
 import LessonCard from "@components/LessonCard";
 import { RefreshData } from "@pages/RefreshData";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -75,6 +76,13 @@ const MainPage = () => {
           </div>
         </div>
       </div>
+      {user.id === undefined ? (
+        <Link to={"/"} className="link-to-create-new-user link">
+          Вы вышли из акаунта, необходимо авторизоваться
+        </Link>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

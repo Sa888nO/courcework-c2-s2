@@ -5,9 +5,16 @@ const LessonCard = ({ title, coach, date, subscribe, ID }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   let id = ID;
-  const currDate = new Date().toLocaleDateString();
-  const currTime = new Date().toLocaleTimeString();
-  console.log(currDate + currTime);
+
+  let day = date.split(" ")[0].split(".")[0];
+  let month = date.split(" ")[0].split(".")[1];
+  let year = date.split(" ")[0].split(".")[2];
+  let datepass = false;
+
+  let dateles = new Date(`${day}/${month}/${year}`);
+  if (dateles <= Date.now()) {
+    datepass = true;
+  }
 
   const subOnLesson = (id) => {
     let body = {
@@ -39,25 +46,32 @@ const LessonCard = ({ title, coach, date, subscribe, ID }) => {
       RefreshData(dispatch);
     });
   };
+  let disable = "";
+  if (datepass) {
+    disable = "disable";
+  }
+
   return (
-    <div className="lesson-card">
-      <div className="info-block">
-        <span className="info-block__title">{title}</span>
-        <span className="info-block__coach">{coach}</span>
-        <span className="info-block__date">{date}</span>
+    <div className={disable}>
+      <div className="lesson-card">
+        <div className="info-block">
+          <span className="info-block__title">{title}</span>
+          <span className="info-block__coach">{coach}</span>
+          <span className="info-block__date">{date}</span>
+        </div>
+        {subscribe === true ? (
+          <button
+            className="button button_out"
+            onClick={() => DeleteSubOnLesson(id)}
+          >
+            Отписаться
+          </button>
+        ) : (
+          <button className="button button_in" onClick={() => subOnLesson(id)}>
+            Записаться
+          </button>
+        )}
       </div>
-      {subscribe === true ? (
-        <button
-          className="button button_out"
-          onClick={() => DeleteSubOnLesson(id)}
-        >
-          Отписаться
-        </button>
-      ) : (
-        <button className="button button_in" onClick={() => subOnLesson(id)}>
-          Записаться
-        </button>
-      )}
     </div>
   );
 };

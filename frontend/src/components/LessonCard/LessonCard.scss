@@ -1,5 +1,10 @@
 @import "/src/styles/mixins";
 
+.disable {
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: -10;
+}
 .lesson-card {
   @include flex("col", 20px);
   box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
