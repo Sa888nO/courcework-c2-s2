@@ -1,0 +1,2 @@
+SELECT title, users.name, users.surname FROM lessons, users, subscribes
+	WHERE (lessons.title == "Борьба") And (user_id == users.id) And (lesson_id == lessons.id)
