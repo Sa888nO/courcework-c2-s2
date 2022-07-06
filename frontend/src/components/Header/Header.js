@@ -1,8 +1,13 @@
 import "./Header.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { outUserAction } from "./../../store/userReducer";
 
 const Header = ({ title }) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
+  const Logout = () => {
+    dispatch(outUserAction());
+  };
   return (
     <header className="header">
       <div className="header__title">{title}</div>
@@ -15,7 +20,9 @@ const Header = ({ title }) => {
           <span className="user-block__user">
             {user.name} {user.surname}
           </span>
-          <button className="user-block__button-out">X</button>
+          <button className="user-block__button-out" onClick={() => Logout()}>
+            X
+          </button>
         </div>
       )}
     </header>

@@ -14,4 +14,7 @@
   align-items: center;
   display: flex;
   background-color: aqua;
+  &:hover {
+    background-color: rgb(177, 250, 255);
+  }
 }
