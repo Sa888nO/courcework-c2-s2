@@ -1,41 +1,10 @@
 import "./Login.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAction } from "../../store/userReducer";
-import { getLessonsAction } from "./../../store/lessonReducer";
-import { getSubscribesAction } from "./../../store/subscribeReduces";
 import { Link } from "react-router-dom";
+import { RefreshData } from "@pages/RefreshData";
 
 const Login = () => {
-  const getLessons = () => {
-    fetch("http://127.0.0.1:5000/api/lessons", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        dispatch(getLessonsAction(data));
-      });
-  };
-  const getSubscribes = (id) => {
-    fetch("http://127.0.0.1:5000/api/AllSubscribes", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        dispatch(getSubscribesAction(data));
-      });
-  };
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const Login = () => {
@@ -60,9 +29,7 @@ const Login = () => {
         } else {
           console.log(data);
           dispatch(getUserAction(data));
-          getLessons();
-          getSubscribes();
-          // window.location.replace("http://localhost:3000/MainPage");
+          RefreshData(dispatch);
         }
       });
   };

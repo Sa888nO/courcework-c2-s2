@@ -2,6 +2,7 @@ import "./Reg.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAction } from "../../store/userReducer";
+import { RefreshData } from "@pages/RefreshData";
 
 const Reg = () => {
   const user = useSelector((state) => state.user.user);
@@ -29,6 +30,7 @@ const Reg = () => {
         } else {
           console.log(data);
           dispatch(getUserAction(data));
+          RefreshData(dispatch);
 
           // window.location.replace("http://localhost:3000/MainPage");
         }

@@ -1,12 +1,16 @@
 import "./Header.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { outUserAction } from "./../../store/userReducer";
+import { outLessonsAction } from "./../../store/lessonReducer";
+import { outSubscribesAction } from "./../../store/subscribeReduces";
 
 const Header = ({ title }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const Logout = () => {
     dispatch(outUserAction());
+    dispatch(outSubscribesAction());
+    dispatch(outLessonsAction());
   };
   return (
     <header className="header">

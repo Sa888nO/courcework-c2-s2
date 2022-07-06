@@ -1,4 +1,5 @@
 import Header from "@components/Header";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLessonsAction } from "./../../store/lessonReducer";
 
