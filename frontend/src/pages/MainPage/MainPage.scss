@@ -1,0 +1,26 @@
+.content {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  min-width: 500px;
+  gap: 25px;
+
+  &__title {
+    font-size: 40px;
+    font-weight: bold;
+    color: darkviolet;
+  }
+  &__lessons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
